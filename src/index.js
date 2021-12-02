@@ -9,9 +9,9 @@ import Providers from "./providers";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Providers>
-      <App />
-    </Providers>
+      <Providers>
+        <App />
+      </Providers>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
