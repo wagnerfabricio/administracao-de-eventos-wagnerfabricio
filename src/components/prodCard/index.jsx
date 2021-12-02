@@ -17,7 +17,6 @@ import {
 
 import "./styles.css";
 import ProdMenuList from "../ProdMenuList";
-import { useFormatura } from "../../providers/Formatura";
 
 const cardStyle = {
   height: "100%",
@@ -28,7 +27,7 @@ const cardStyle = {
   justifyContent: "space-between",
 };
 
-const ProductCard = ({ product, isRemovable = false }) => {
+const ProductCard = ({ product, handleButtonRemove, isRemovable = false }) => {
   const { image_url: img, name, first_brewed, description, volume } = product;
 
   //@mui popover
@@ -36,7 +35,7 @@ const ProductCard = ({ product, isRemovable = false }) => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -83,17 +82,13 @@ const ProductCard = ({ product, isRemovable = false }) => {
           </CardContent>
         </CardActionArea>
 
-        <ProdMenuList product={product}/>
-        {/* <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleOpenNavMenu}
-          color="secondary"
-        >
-          <BiAddToQueue />
-        </IconButton> */}
+        {isRemovable ? (
+          <Button color="secondary" onClick={() => handleButtonRemove(product)}>
+            Remover
+          </Button>
+        ) : (
+          <ProdMenuList product={product} />
+        )}
       </Card>
 
       <Popover
@@ -150,9 +145,14 @@ const ProductCard = ({ product, isRemovable = false }) => {
             </Typography>
           </div>
         </div>
+        {isRemovable ? (
+          <Button color="secondary" onClick={() => handleButtonRemove(product)}>
+            Remover
+          </Button>
+        ) : (
+          <ProdMenuList product={product} />
+        )}
       </Popover>
-
-      <Card sx={{ maxWidth: 345 }} className="product-card__button"></Card>
     </>
   );
 };

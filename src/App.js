@@ -4,7 +4,6 @@ import Routes from "./routes";
 
 //STYLES
 import GlobalStyle from "./styles/globalStyles";
-import { Container } from "@mui/material";
 
 function App() {
   return (

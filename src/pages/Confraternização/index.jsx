@@ -1,24 +1,47 @@
 // import { Button, Container, Grid } from "@mui/material";
-import { Container, Grid, Typography } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
+import { useHistory } from "react-router";
 import ProductCard from "../../components/prodCard";
 import { useConfraternizacao } from "../../providers/Confraternizacao";
+import { ContainerBox } from "./styles";
 // import { Content } from "./styles";
 
 const Confraternizacao = () => {
-  const { confraternizacaoList } = useConfraternizacao();
+  const {
+    confraternizacaoList,
+    removeFromConfraternizacao,
+    clearConfraternizacao,
+  } = useConfraternizacao();
+
+  const history = useHistory();
 
   const showDrinks = confraternizacaoList.map((product) => (
     <Grid item xs={12} sm={4} md={3} key={product.id}>
-      <ProductCard product={product} />
+      <ProductCard
+        product={product}
+        isRemovable
+        handleButtonRemove={removeFromConfraternizacao}
+      />
     </Grid>
   ));
 
-  return (
+  return confraternizacaoList.length > 0 ? (
     <Container>
-      <Grid item xs={12} p={2}>
-        <Typography variant="h5" color="secondary">
-          Confraternização
-        </Typography>
+      <Grid container justifyContent="space-between">
+        <Grid item xs={3} p={2}>
+          <Typography variant="h5" color="secondary">
+            Confraternização
+          </Typography>
+        </Grid>
+        <Grid item xs={3} p={2}>
+          <Button
+            color="secondary"
+            variant="outlined"
+            onClick={clearConfraternizacao}
+          >
+            Limpar Lista
+          </Button>
+        </Grid>
       </Grid>
       <Grid
         container
@@ -28,6 +51,30 @@ const Confraternizacao = () => {
       >
         {showDrinks}
       </Grid>
+    </Container>
+  ) : (
+    <Container>
+      <Grid container justifyContent="space-between">
+        <Grid item xs={3} p={2}>
+          <Typography variant="h5" color="secondary">
+            Confraternização
+          </Typography>
+        </Grid>
+        <Grid item xs={3} p={2}>
+          <Button
+            color="secondary"
+            variant="outlined"
+            onClick={() => history.push("/")}
+          >
+            Voltar para Home
+          </Button>
+        </Grid>
+      </Grid>
+      <ContainerBox>
+        <Typography variant="h5" color="secondary">
+          Sua lista está vazia :'(...
+        </Typography>
+      </ContainerBox>
     </Container>
   );
 };

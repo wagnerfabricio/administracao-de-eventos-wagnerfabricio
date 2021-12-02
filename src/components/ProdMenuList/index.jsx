@@ -1,3 +1,10 @@
+import { useEffect, useRef, useState } from "react";
+import { useCasamento } from "../../providers/Casamento";
+import { useConfraternizacao } from "../../providers/Confraternizacao";
+import { useFormatura } from "../../providers/Formatura";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+
+//STYLE COMPONENTS
 import {
   Button,
   Grow,
@@ -8,11 +15,6 @@ import {
   Stack,
   ClickAwayListener,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import { BiAddToQueue } from "react-icons/bi";
-import { useCasamento } from "../../providers/Casamento";
-import { useConfraternizacao } from "../../providers/Confraternizacao";
-import { useFormatura } from "../../providers/Formatura";
 
 const ProdMenuList = ({ product, ...rest }) => {
   const { addToFormatura } = useFormatura();
@@ -72,7 +74,7 @@ const ProdMenuList = ({ product, ...rest }) => {
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        <BiAddToQueue />
+        <AddBoxIcon fontSize="large" color="secondary" />
       </Button>
       <Popper
         open={openCardMenu}
