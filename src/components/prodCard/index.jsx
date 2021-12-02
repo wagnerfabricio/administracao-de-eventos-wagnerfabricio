@@ -124,7 +124,6 @@ const ProductCard = ({ product, handleButtonRemove, isRemovable = false }) => {
             <Typography
               variant="body2"
               color="text.secondary"
-              // className="card-description"
               maxWidth="400px"
             >
               {description}
