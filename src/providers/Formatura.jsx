@@ -26,7 +26,7 @@ export const FormaturaProvider = ({ children }) => {
     localStorage.setItem("@kenziedrinks:formatura", JSON.stringify(newList));
   };
 
-  const cleanFormatura = () => {
+  const clearFormatura = () => {
     setFormaturaList([]);
     localStorage.removeItem("@kenziedrinks:formatura")
   };
@@ -37,7 +37,7 @@ export const FormaturaProvider = ({ children }) => {
         formaturaList,
         addToFormatura,
         removeFromFormatura,
-        cleanFormatura,
+        clearFormatura,
       }}
     >
       {children}

@@ -10,3 +10,9 @@ export const Content = styled.div`
     margin-left: 10px;
   }
 `;
+
+export const ContainerBox = styled.div`
+  min-height: 50vh;
+  display: grid;
+  place-items: center;
+`;
