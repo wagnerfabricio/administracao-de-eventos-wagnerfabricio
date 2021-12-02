@@ -1,0 +1,21 @@
+.card-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.popover {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  -webkit-line-clamp: 10;
+}
+
+.popover img {
+  display: block;
+  height: 50vh;
+  object-fit: contain;
+}
