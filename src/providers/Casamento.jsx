@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import toast from "react-hot-toast";
 
 export const CasamentoContext = createContext();
 
@@ -16,6 +17,7 @@ export const CasamentoProvider = ({ children }) => {
     const newList = [...casamentoList, product];
     setCasamentoList(newList);
     localStorage.setItem("@kenziedrinks:casamento", JSON.stringify(newList));
+    toast.success("Produto adicionado a lista");
   };
 
   const removeFromCasamento = (newProduct) => {
@@ -24,6 +26,7 @@ export const CasamentoProvider = ({ children }) => {
     );
     setCasamentoList(newList);
     localStorage.setItem("@kenziedrinks:casamento", JSON.stringify(newList));
+    toast.success("Produto removido da lista");
   };
 
   const clearCasamento = () => {

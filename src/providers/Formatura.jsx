@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import toast from "react-hot-toast";
 
 export const FormaturaContext = createContext();
 
@@ -16,6 +17,7 @@ export const FormaturaProvider = ({ children }) => {
     const newList = [...formaturaList, product];
     setFormaturaList(newList);
     localStorage.setItem("@kenziedrinks:formatura", JSON.stringify(newList));
+    toast.success("Produto adicionado a lista");
   };
 
   const removeFromFormatura = (newProduct) => {
@@ -24,11 +26,12 @@ export const FormaturaProvider = ({ children }) => {
     );
     setFormaturaList(newList);
     localStorage.setItem("@kenziedrinks:formatura", JSON.stringify(newList));
+    toast.success("Produto removido da lista");
   };
 
   const clearFormatura = () => {
     setFormaturaList([]);
-    localStorage.removeItem("@kenziedrinks:formatura")
+    localStorage.removeItem("@kenziedrinks:formatura");
   };
 
   return (

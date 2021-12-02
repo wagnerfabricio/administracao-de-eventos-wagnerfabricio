@@ -1,4 +1,5 @@
-const { createContext, useState, useContext } = require("react");
+import { createContext, useState, useContext } from "react";
+import toast from "react-hot-toast";
 
 export const ConfraternizacaoContext = createContext();
 
@@ -18,6 +19,7 @@ export const ConfraternizacaoProvider = ({ children }) => {
       "@kenziedrinks:confraternizacao",
       JSON.stringify(newList)
     );
+    toast.success("Produto adicionado a lista");
   };
 
   const removeFromConfraternizacao = (newProduct) => {
@@ -29,6 +31,7 @@ export const ConfraternizacaoProvider = ({ children }) => {
       "@kenziedrinks:confraternizacao",
       JSON.stringify(newList)
     );
+    toast.success("Produto removido da lista");
   };
 
   const clearConfraternizacao = () => {

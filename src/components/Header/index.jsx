@@ -54,7 +54,17 @@ const Header = () => {
       <AppBar position="static" color="default">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Button style={{ textTransform: "none" }} onClick={handleLogo}>
+            <Button
+              style={{ textTransform: "none" }}
+              sx={{
+                mr: 2,
+                display: {
+                  xs: "none",
+                  md: "flex",
+                },
+              }}
+              onClick={handleLogo}
+            >
               <Typography
                 variant="h4"
                 noWrap
